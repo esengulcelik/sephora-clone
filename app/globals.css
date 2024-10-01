@@ -1,0 +1,89 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.transition-bg {
+    position: relative;
+    overflow: hidden;
+
+    transition: color 0.3s;
+}
+
+.transition-bg::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #bdbdbd;
+    /* Hover rengi */
+    transform: translateY(100%);
+    transition: transform 0.3s;
+    z-index: 0;
+}
+
+.transition-bg:hover::before {
+    transform: translateY(0);
+}
+
+.transition-bg:hover {
+    color: #000000;
+    /* Hover sırasında metin rengi */
+
+}
+
+.transition-bg p {
+    position: relative;
+    z-index: 1;
+}
+
+.link-container {
+    position: relative;
+    display: inline-block;
+}
+
+.text-content {
+    transition: opacity 0.3s ease;
+}
+
+.link-container:hover .text-content {
+    opacity: 0;
+    /* Hover olduğunda metni gizle */
+}
+
+.link-container:hover .hover-content {
+    opacity: 1;
+    /* Hover olduğunda yeni içeriği göster */
+    visibility: visible;
+}
+
+.hover-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%; /* Genişliği %100 yaparak kapsayıcı div'in genişliğini kaplar */
+    height: 50%; /* Yüksekliği %100 yaparak kapsayıcı div'in yüksekliğini kaplar */
+    background-color: rgba(255, 255, 255, 0.7); /* Arka planın opaklık ayarı */
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    opacity: 0; /* Başlangıçta görünmez */
+    visibility: hidden; /* Başlangıçta görünmez */
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+  }
+
+.hover-content .button {
+    margin-top: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
